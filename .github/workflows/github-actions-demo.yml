@@ -6,6 +6,12 @@ on:
       - test-actions
     paths:
       - 'data/input_2022/Discovery/Results/*.csv'
+  pull_request:
+    branches:
+      - main
+      - test-actions
+    paths:
+      - 'data/input_2022/Discovery/Results/*.csv'
 
 jobs:
   Count-at-risk-features-in-discovery:
