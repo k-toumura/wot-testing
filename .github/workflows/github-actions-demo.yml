@@ -1,11 +1,23 @@
-name: Count At-risk items in Discovery
-on: [push]
+name: Count at-risk features in Discovery
+on:
+  push:
+    branches:
+      - main
+      - test-actions
+
 jobs:
-  Count-At-Risk-in-Discovery:
+  Count-at-risk-features-in-discovery:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Check out wot-testing
         uses: actions/checkout@v3
-      - name: Count lines
+
+      - name: Check out wot-discovery
+        uses: actions/checkout@v3
+        with:
+          repository: w3c/wot-discovery
+          path: wot-discovery
+
+      - name: Run assertion coverage script
         run: |
-          wc ${{ github.workspace }}/data/input_2022/Discovery/Results/*.csv
+          python3 data/input_2022/scripts/discovery-coverage.py >> $GITHUB_STEP_SUMMARY
