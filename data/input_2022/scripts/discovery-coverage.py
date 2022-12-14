@@ -27,7 +27,9 @@ for a in assertion_id:
 print(f'### Assertion coverage')
 print(f'- coverage: {100*covered/len(assertion_id)}%')
 print(f'- at-risk assertions: {len(assertion_id)-covered}')
-print(f'<details><summary>list of at-risk assertions</summary>')
+print(f'<details>')
+print(f'  <summary>list of at-risk assertions</summary>')
+print(f'')
 for x in assertion_id:
     if assertion_id[x] < 2:
         print(f'  - [{x}](https://w3c.github.io/wot-discovery#{x}): pass={assertion_id[x]}')
