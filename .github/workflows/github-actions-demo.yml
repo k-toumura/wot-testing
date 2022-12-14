@@ -1,11 +1,5 @@
 name: Count at-risk features in Discovery
 on:
-  push:
-    branches:
-      - main
-      - test-actions
-    paths:
-      - 'data/input_2022/Discovery/Results/*.csv'
   pull_request:
     branches:
       - main
@@ -28,4 +22,10 @@ jobs:
 
       - name: Run assertion coverage script
         run: |
-          python3 data/input_2022/scripts/discovery-coverage.py >> $GITHUB_STEP_SUMMARY
+          python3 data/input_2022/scripts/discovery-coverage.py > ./output.txt
+      
+      - name: Post result to PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo gh pr comment ${{ github.event.pull_request.number }} -F ./output.txt --repo ${{ github.repository }}
