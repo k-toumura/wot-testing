@@ -1,2 +1,2 @@
 ID,Status,Comment
-tdd-anonymous-td-identifier,pass,passed:TestCreateAnonymousThing/registration_info passed:TestListThings/anonymous_td_id
+tdd-anonymous-td-identifier,fail,passed:TestCreateAnonymousThing/registration_info passed:TestListThings/anonymous_td_id
